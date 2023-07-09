@@ -50,6 +50,10 @@ stages:
           sonar.projectName=vega-spring
           sonar.projectKey=seng426group9vega-spring
 
+    - task: SonarQubeAnalyze@5
+      inputs:
+        jdkversion: 'JAVA_HOME_11_X64'
+
     - task: SonarQubePublish@5
       inputs:
         pollingTimeoutSec: '300'
