@@ -37,3 +37,19 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+
+          
+    - task: SonarQubePrepare@5
+      inputs:
+        SonarQube: 'SonarQubeServer'
+        scannerMode: 'Other'
+        extraProperties: |
+          # Additional properties that will be passed to the scanner, 
+          # Put one key=value per line, example:
+          # sonar.exclusions=**/*.bin
+          sonar.projectName=vega-spring
+          sonar.projectKey=seng426group9vega-spring
+
+    - task: SonarQubePublish@5
+      inputs:
+        pollingTimeoutSec: '300'
